@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.20)
 
 project(url_shortener)
 
+enable_testing()
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -16,6 +18,8 @@ add_executable(url_shortener
     src/handlers/url_handler.cpp
     src/services/auth_service.cpp
     src/services/url_service.cpp
+    src/url_store.cpp
+    src/utils/auth_utils.cpp
     src/utils/rate_limiter.cpp
     src/utils/url_utils.cpp
 )
@@ -38,3 +42,25 @@ if(WIN32)
         COMMAND_EXPAND_LISTS
     )
 endif()
+
+add_executable(url_store_tests
+    tests/url_store_tests.cpp
+    src/url_store.cpp
+)
+target_include_directories(url_store_tests PRIVATE include)
+add_test(NAME url_store_tests COMMAND url_store_tests)
+
+add_executable(rate_limiter_test
+    tests/rate_limiter_test.cpp
+    src/utils/rate_limiter.cpp
+)
+target_include_directories(rate_limiter_test PRIVATE include)
+add_test(NAME rate_limiter_test COMMAND rate_limiter_test)
+
+add_executable(auth_utils_tests
+    tests/auth_utils_tests.cpp
+    src/utils/auth_utils.cpp
+)
+target_include_directories(auth_utils_tests PRIVATE include)
+target_link_libraries(auth_utils_tests PRIVATE OpenSSL::Crypto)
+add_test(NAME auth_utils_tests COMMAND auth_utils_tests)

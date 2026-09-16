@@ -161,11 +161,41 @@ CMakeFiles/url_shortener.dir/src/services/url_service.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/url_shortener.dir/src/services/url_service.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\services\url_service.cpp -o CMakeFiles\url_shortener.dir\src\services\url_service.cpp.s
 
+CMakeFiles/url_shortener.dir/src/url_store.cpp.obj: CMakeFiles/url_shortener.dir/flags.make
+CMakeFiles/url_shortener.dir/src/url_store.cpp.obj: CMakeFiles/url_shortener.dir/includes_CXX.rsp
+CMakeFiles/url_shortener.dir/src/url_store.cpp.obj: C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/src/url_store.cpp
+CMakeFiles/url_shortener.dir/src/url_store.cpp.obj: CMakeFiles/url_shortener.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/url_shortener.dir/src/url_store.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/url_shortener.dir/src/url_store.cpp.obj -MF CMakeFiles\url_shortener.dir\src\url_store.cpp.obj.d -o CMakeFiles\url_shortener.dir\src\url_store.cpp.obj -c C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\url_store.cpp
+
+CMakeFiles/url_shortener.dir/src/url_store.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/url_shortener.dir/src/url_store.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\url_store.cpp > CMakeFiles\url_shortener.dir\src\url_store.cpp.i
+
+CMakeFiles/url_shortener.dir/src/url_store.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/url_shortener.dir/src/url_store.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\url_store.cpp -o CMakeFiles\url_shortener.dir\src\url_store.cpp.s
+
+CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj: CMakeFiles/url_shortener.dir/flags.make
+CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj: CMakeFiles/url_shortener.dir/includes_CXX.rsp
+CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj: C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/src/utils/auth_utils.cpp
+CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj: CMakeFiles/url_shortener.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj -MF CMakeFiles\url_shortener.dir\src\utils\auth_utils.cpp.obj.d -o CMakeFiles\url_shortener.dir\src\utils\auth_utils.cpp.obj -c C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\utils\auth_utils.cpp
+
+CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\utils\auth_utils.cpp > CMakeFiles\url_shortener.dir\src\utils\auth_utils.cpp.i
+
+CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\utils\auth_utils.cpp -o CMakeFiles\url_shortener.dir\src\utils\auth_utils.cpp.s
+
 CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj: CMakeFiles/url_shortener.dir/flags.make
 CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj: CMakeFiles/url_shortener.dir/includes_CXX.rsp
 CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj: C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/src/utils/rate_limiter.cpp
 CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj: CMakeFiles/url_shortener.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj -MF CMakeFiles\url_shortener.dir\src\utils\rate_limiter.cpp.obj.d -o CMakeFiles\url_shortener.dir\src\utils\rate_limiter.cpp.obj -c C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\utils\rate_limiter.cpp
 
 CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.i: cmake_force
@@ -180,7 +210,7 @@ CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj: CMakeFiles/url_shorten
 CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj: CMakeFiles/url_shortener.dir/includes_CXX.rsp
 CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj: C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/src/utils/url_utils.cpp
 CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj: CMakeFiles/url_shortener.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj -MF CMakeFiles\url_shortener.dir\src\utils\url_utils.cpp.obj.d -o CMakeFiles\url_shortener.dir\src\utils\url_utils.cpp.obj -c C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\src\utils\url_utils.cpp
 
 CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.i: cmake_force
@@ -199,6 +229,8 @@ url_shortener_OBJECTS = \
 "CMakeFiles/url_shortener.dir/src/handlers/url_handler.cpp.obj" \
 "CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.obj" \
 "CMakeFiles/url_shortener.dir/src/services/url_service.cpp.obj" \
+"CMakeFiles/url_shortener.dir/src/url_store.cpp.obj" \
+"CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj" \
 "CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj" \
 "CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj"
 
@@ -211,6 +243,8 @@ url_shortener.exe: CMakeFiles/url_shortener.dir/src/database/database.cpp.obj
 url_shortener.exe: CMakeFiles/url_shortener.dir/src/handlers/url_handler.cpp.obj
 url_shortener.exe: CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.obj
 url_shortener.exe: CMakeFiles/url_shortener.dir/src/services/url_service.cpp.obj
+url_shortener.exe: CMakeFiles/url_shortener.dir/src/url_store.cpp.obj
+url_shortener.exe: CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj
 url_shortener.exe: CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj
 url_shortener.exe: CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.obj
 url_shortener.exe: CMakeFiles/url_shortener.dir/build.make
@@ -221,7 +255,7 @@ url_shortener.exe: C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/install
 url_shortener.exe: CMakeFiles/url_shortener.dir/linkLibs.rsp
 url_shortener.exe: CMakeFiles/url_shortener.dir/objects1.rsp
 url_shortener.exe: CMakeFiles/url_shortener.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable url_shortener.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable url_shortener.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\url_shortener.dir\link.txt --verbose=$(VERBOSE)
 	"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/share/drogon/../../bin C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build
 

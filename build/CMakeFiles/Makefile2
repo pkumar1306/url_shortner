@@ -63,10 +63,16 @@ CMAKE_BINARY_DIR = C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c81918
 
 # The main recursive "all" target.
 all: CMakeFiles/url_shortener.dir/all
+all: CMakeFiles/url_store_tests.dir/all
+all: CMakeFiles/rate_limiter_test.dir/all
+all: CMakeFiles/auth_utils_tests.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/url_shortener.dir/codegen
+codegen: CMakeFiles/url_store_tests.dir/codegen
+codegen: CMakeFiles/rate_limiter_test.dir/codegen
+codegen: CMakeFiles/auth_utils_tests.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,6 +81,9 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/url_shortener.dir/clean
+clean: CMakeFiles/url_store_tests.dir/clean
+clean: CMakeFiles/rate_limiter_test.dir/clean
+clean: CMakeFiles/auth_utils_tests.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -84,12 +93,12 @@ clean: CMakeFiles/url_shortener.dir/clean
 CMakeFiles/url_shortener.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target url_shortener"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17 "Built target url_shortener"
 .PHONY : CMakeFiles/url_shortener.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/url_shortener.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/url_shortener.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 0
 .PHONY : CMakeFiles/url_shortener.dir/rule
@@ -101,13 +110,109 @@ url_shortener: CMakeFiles/url_shortener.dir/rule
 # codegen rule for target.
 CMakeFiles/url_shortener.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Finished codegen for target url_shortener"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17 "Finished codegen for target url_shortener"
 .PHONY : CMakeFiles/url_shortener.dir/codegen
 
 # clean rule for target.
 CMakeFiles/url_shortener.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/clean
 .PHONY : CMakeFiles/url_shortener.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/url_store_tests.dir
+
+# All Build rule for target.
+CMakeFiles/url_store_tests.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=18,19,20 "Built target url_store_tests"
+.PHONY : CMakeFiles/url_store_tests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/url_store_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/url_store_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 0
+.PHONY : CMakeFiles/url_store_tests.dir/rule
+
+# Convenience name for target.
+url_store_tests: CMakeFiles/url_store_tests.dir/rule
+.PHONY : url_store_tests
+
+# codegen rule for target.
+CMakeFiles/url_store_tests.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=18,19,20 "Finished codegen for target url_store_tests"
+.PHONY : CMakeFiles/url_store_tests.dir/codegen
+
+# clean rule for target.
+CMakeFiles/url_store_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/clean
+.PHONY : CMakeFiles/url_store_tests.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/rate_limiter_test.dir
+
+# All Build rule for target.
+CMakeFiles/rate_limiter_test.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=4,5,6 "Built target rate_limiter_test"
+.PHONY : CMakeFiles/rate_limiter_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rate_limiter_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/rate_limiter_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 0
+.PHONY : CMakeFiles/rate_limiter_test.dir/rule
+
+# Convenience name for target.
+rate_limiter_test: CMakeFiles/rate_limiter_test.dir/rule
+.PHONY : rate_limiter_test
+
+# codegen rule for target.
+CMakeFiles/rate_limiter_test.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=4,5,6 "Finished codegen for target rate_limiter_test"
+.PHONY : CMakeFiles/rate_limiter_test.dir/codegen
+
+# clean rule for target.
+CMakeFiles/rate_limiter_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/clean
+.PHONY : CMakeFiles/rate_limiter_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/auth_utils_tests.dir
+
+# All Build rule for target.
+CMakeFiles/auth_utils_tests.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=1,2,3 "Built target auth_utils_tests"
+.PHONY : CMakeFiles/auth_utils_tests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/auth_utils_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/auth_utils_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles 0
+.PHONY : CMakeFiles/auth_utils_tests.dir/rule
+
+# Convenience name for target.
+auth_utils_tests: CMakeFiles/auth_utils_tests.dir/rule
+.PHONY : auth_utils_tests
+
+# codegen rule for target.
+CMakeFiles/auth_utils_tests.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c819189e9b441c509d27d\build\CMakeFiles --progress-num=1,2,3 "Finished codegen for target auth_utils_tests"
+.PHONY : CMakeFiles/auth_utils_tests.dir/codegen
+
+# clean rule for target.
+CMakeFiles/auth_utils_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/clean
+.PHONY : CMakeFiles/auth_utils_tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

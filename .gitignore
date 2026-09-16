@@ -1,0 +1,29 @@
+# CMake and compiler output
+/build/
+/build2/
+/build3/
+/build_collision_check/
+/build_refactor_check/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+Makefile
+
+# Local runtime output and test artifacts
+/uploads/
+/tmp/
+*.log
+*.exe
+*.dll
+*.pdb
+*.ilk
+
+# IDE and local environment files
+.vs/
+.vscode/
+*.user
+*.suo
+__pycache__/
+*.py[cod]

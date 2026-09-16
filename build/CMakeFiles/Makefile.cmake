@@ -97,4 +97,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/url_shortener.dir/DependInfo.cmake"
+  "CMakeFiles/url_store_tests.dir/DependInfo.cmake"
+  "CMakeFiles/rate_limiter_test.dir/DependInfo.cmake"
+  "CMakeFiles/auth_utils_tests.dir/DependInfo.cmake"
   )

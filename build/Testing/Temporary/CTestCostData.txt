@@ -1,1 +1,4 @@
+url_store_tests 6 0.0118898
+rate_limiter_test 6 1.00244
+auth_utils_tests 6 0.0341975
 ---

@@ -64,6 +64,16 @@ CMAKE_BINARY_DIR = C:\Users\tpare\.codex\.chatgpt-projects\g-p-6aa647d99e5c81918
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	"C:\Program Files\CMake\bin\ctest.exe" $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -127,6 +137,45 @@ url_shortener: cmake_check_build_system
 url_shortener/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/build
 .PHONY : url_shortener/fast
+
+#=============================================================================
+# Target rules for targets named url_store_tests
+
+# Build rule for target.
+url_store_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 url_store_tests
+.PHONY : url_store_tests
+
+# fast build rule for target.
+url_store_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/build
+.PHONY : url_store_tests/fast
+
+#=============================================================================
+# Target rules for targets named rate_limiter_test
+
+# Build rule for target.
+rate_limiter_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 rate_limiter_test
+.PHONY : rate_limiter_test
+
+# fast build rule for target.
+rate_limiter_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/build
+.PHONY : rate_limiter_test/fast
+
+#=============================================================================
+# Target rules for targets named auth_utils_tests
+
+# Build rule for target.
+auth_utils_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 auth_utils_tests
+.PHONY : auth_utils_tests
+
+# fast build rule for target.
+auth_utils_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/build
+.PHONY : auth_utils_tests/fast
 
 src/config/app_config.obj: src/config/app_config.cpp.obj
 .PHONY : src/config/app_config.obj
@@ -272,12 +321,67 @@ src/services/url_service.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/services/url_service.cpp.s
 .PHONY : src/services/url_service.cpp.s
 
+src/url_store.obj: src/url_store.cpp.obj
+.PHONY : src/url_store.obj
+
+# target to build an object file
+src/url_store.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/url_store.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/src/url_store.cpp.obj
+.PHONY : src/url_store.cpp.obj
+
+src/url_store.i: src/url_store.cpp.i
+.PHONY : src/url_store.i
+
+# target to preprocess a source file
+src/url_store.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/url_store.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/src/url_store.cpp.i
+.PHONY : src/url_store.cpp.i
+
+src/url_store.s: src/url_store.cpp.s
+.PHONY : src/url_store.s
+
+# target to generate assembly for a file
+src/url_store.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/url_store.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/src/url_store.cpp.s
+.PHONY : src/url_store.cpp.s
+
+src/utils/auth_utils.obj: src/utils/auth_utils.cpp.obj
+.PHONY : src/utils/auth_utils.obj
+
+# target to build an object file
+src/utils/auth_utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/src/utils/auth_utils.cpp.obj
+.PHONY : src/utils/auth_utils.cpp.obj
+
+src/utils/auth_utils.i: src/utils/auth_utils.cpp.i
+.PHONY : src/utils/auth_utils.i
+
+# target to preprocess a source file
+src/utils/auth_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/src/utils/auth_utils.cpp.i
+.PHONY : src/utils/auth_utils.cpp.i
+
+src/utils/auth_utils.s: src/utils/auth_utils.cpp.s
+.PHONY : src/utils/auth_utils.s
+
+# target to generate assembly for a file
+src/utils/auth_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/utils/auth_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/src/utils/auth_utils.cpp.s
+.PHONY : src/utils/auth_utils.cpp.s
+
 src/utils/rate_limiter.obj: src/utils/rate_limiter.cpp.obj
 .PHONY : src/utils/rate_limiter.obj
 
 # target to build an object file
 src/utils/rate_limiter.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/src/utils/rate_limiter.cpp.obj
 .PHONY : src/utils/rate_limiter.cpp.obj
 
 src/utils/rate_limiter.i: src/utils/rate_limiter.cpp.i
@@ -286,6 +390,7 @@ src/utils/rate_limiter.i: src/utils/rate_limiter.cpp.i
 # target to preprocess a source file
 src/utils/rate_limiter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/src/utils/rate_limiter.cpp.i
 .PHONY : src/utils/rate_limiter.cpp.i
 
 src/utils/rate_limiter.s: src/utils/rate_limiter.cpp.s
@@ -294,6 +399,7 @@ src/utils/rate_limiter.s: src/utils/rate_limiter.cpp.s
 # target to generate assembly for a file
 src/utils/rate_limiter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/src/utils/rate_limiter.cpp.s
 .PHONY : src/utils/rate_limiter.cpp.s
 
 src/utils/url_utils.obj: src/utils/url_utils.cpp.obj
@@ -320,6 +426,78 @@ src/utils/url_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/utils/url_utils.cpp.s
 .PHONY : src/utils/url_utils.cpp.s
 
+tests/auth_utils_tests.obj: tests/auth_utils_tests.cpp.obj
+.PHONY : tests/auth_utils_tests.obj
+
+# target to build an object file
+tests/auth_utils_tests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/tests/auth_utils_tests.cpp.obj
+.PHONY : tests/auth_utils_tests.cpp.obj
+
+tests/auth_utils_tests.i: tests/auth_utils_tests.cpp.i
+.PHONY : tests/auth_utils_tests.i
+
+# target to preprocess a source file
+tests/auth_utils_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/tests/auth_utils_tests.cpp.i
+.PHONY : tests/auth_utils_tests.cpp.i
+
+tests/auth_utils_tests.s: tests/auth_utils_tests.cpp.s
+.PHONY : tests/auth_utils_tests.s
+
+# target to generate assembly for a file
+tests/auth_utils_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\auth_utils_tests.dir\build.make CMakeFiles/auth_utils_tests.dir/tests/auth_utils_tests.cpp.s
+.PHONY : tests/auth_utils_tests.cpp.s
+
+tests/rate_limiter_test.obj: tests/rate_limiter_test.cpp.obj
+.PHONY : tests/rate_limiter_test.obj
+
+# target to build an object file
+tests/rate_limiter_test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/tests/rate_limiter_test.cpp.obj
+.PHONY : tests/rate_limiter_test.cpp.obj
+
+tests/rate_limiter_test.i: tests/rate_limiter_test.cpp.i
+.PHONY : tests/rate_limiter_test.i
+
+# target to preprocess a source file
+tests/rate_limiter_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/tests/rate_limiter_test.cpp.i
+.PHONY : tests/rate_limiter_test.cpp.i
+
+tests/rate_limiter_test.s: tests/rate_limiter_test.cpp.s
+.PHONY : tests/rate_limiter_test.s
+
+# target to generate assembly for a file
+tests/rate_limiter_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rate_limiter_test.dir\build.make CMakeFiles/rate_limiter_test.dir/tests/rate_limiter_test.cpp.s
+.PHONY : tests/rate_limiter_test.cpp.s
+
+tests/url_store_tests.obj: tests/url_store_tests.cpp.obj
+.PHONY : tests/url_store_tests.obj
+
+# target to build an object file
+tests/url_store_tests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/tests/url_store_tests.cpp.obj
+.PHONY : tests/url_store_tests.cpp.obj
+
+tests/url_store_tests.i: tests/url_store_tests.cpp.i
+.PHONY : tests/url_store_tests.i
+
+# target to preprocess a source file
+tests/url_store_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/tests/url_store_tests.cpp.i
+.PHONY : tests/url_store_tests.cpp.i
+
+tests/url_store_tests.s: tests/url_store_tests.cpp.s
+.PHONY : tests/url_store_tests.s
+
+# target to generate assembly for a file
+tests/url_store_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_store_tests.dir\build.make CMakeFiles/url_store_tests.dir/tests/url_store_tests.cpp.s
+.PHONY : tests/url_store_tests.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -328,7 +506,11 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... test
+	@echo ... auth_utils_tests
+	@echo ... rate_limiter_test
 	@echo ... url_shortener
+	@echo ... url_store_tests
 	@echo ... src/config/app_config.obj
 	@echo ... src/config/app_config.i
 	@echo ... src/config/app_config.s
@@ -347,12 +529,27 @@ help:
 	@echo ... src/services/url_service.obj
 	@echo ... src/services/url_service.i
 	@echo ... src/services/url_service.s
+	@echo ... src/url_store.obj
+	@echo ... src/url_store.i
+	@echo ... src/url_store.s
+	@echo ... src/utils/auth_utils.obj
+	@echo ... src/utils/auth_utils.i
+	@echo ... src/utils/auth_utils.s
 	@echo ... src/utils/rate_limiter.obj
 	@echo ... src/utils/rate_limiter.i
 	@echo ... src/utils/rate_limiter.s
 	@echo ... src/utils/url_utils.obj
 	@echo ... src/utils/url_utils.i
 	@echo ... src/utils/url_utils.s
+	@echo ... tests/auth_utils_tests.obj
+	@echo ... tests/auth_utils_tests.i
+	@echo ... tests/auth_utils_tests.s
+	@echo ... tests/rate_limiter_test.obj
+	@echo ... tests/rate_limiter_test.i
+	@echo ... tests/rate_limiter_test.s
+	@echo ... tests/url_store_tests.obj
+	@echo ... tests/url_store_tests.i
+	@echo ... tests/url_store_tests.s
 .PHONY : help
 
 

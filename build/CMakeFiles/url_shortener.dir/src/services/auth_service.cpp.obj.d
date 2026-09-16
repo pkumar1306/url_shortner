@@ -603,33 +603,4 @@ CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.obj: \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/drogon/IntranetIpFilter.h \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/drogon/LocalHostFilter.h \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/drogon/IOThreadStorage.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/rand.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/macros.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/opensslconf.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/configuration.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/opensslv.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/types.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/e_os2.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/safestack.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/stack.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/randerr.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/symhacks.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/cryptoerr_legacy.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/evp.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/core.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/core_dispatch.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/indicator.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/params.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/bn.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/crypto.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/cryptoerr.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/bnerr.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/bio.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/bioerr.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/evperr.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/objects.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/obj_mac.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/asn1.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/asn1err.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/objectserr.h \
- C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/openssl/sha.h
+ C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/include/utils/auth_utils.h

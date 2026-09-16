@@ -38,7 +38,8 @@ cmake -S . -B build
 cmake --build build
 ```
 
-Apply the database schema before starting the server:
+Apply the database schema before starting the server. The script also upgrades
+an existing `urls` table by adding the Phase 8 ownership column:
 
 ```powershell
 psql -h $env:DB_HOST -p $env:DB_PORT -U $env:DB_USER -d $env:DB_NAME -f database/schema.sql
@@ -93,7 +94,41 @@ Expected creation response:
 ## Test
 
 ```powershell
+cmake --build build
 ctest --test-dir build --output-on-failure
+```
+
+The default CTest suite runs the URL-store, rate-limiter, and API-key utility
+tests. The rate-limiter test intentionally waits about six seconds to verify
+token refill.
+
+For the live API checks, start the server with PostgreSQL initialized from
+`database/schema.sql`, then run:
+
+```powershell
+$env:TEST_BASE_URL = "http://localhost:8080"
+python tests/api_integration_test.py
+```
+
+The integration test issues its own API keys and verifies authentication
+failures, authenticated URL creation, ownership isolation for statistics, and
+public redirects. It exits nonzero on failure and requires the Python
+`requests` package.
+
+For authenticated concurrency checks, set `TEST_API_KEY` to a key returned by
+`POST /api/v1/keys`:
+
+```powershell
+$env:TEST_API_KEY = "<api-key>"
+python tests/concurrency_tests.py
+python tests/rate_limit_functest.py
+```
+
+To test concurrent public redirects, set `TEST_CODE` to a created short code:
+
+```powershell
+$env:TEST_CODE = "<short-code>"
+python tests/concurrency_redirect_test.py
 ```
 
 
