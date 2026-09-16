@@ -1,0 +1,3 @@
+C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build_collision_check/CMakeFiles/url_shortener.dir
+C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build_collision_check/CMakeFiles/edit_cache.dir
+C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build_collision_check/CMakeFiles/rebuild_cache.dir
