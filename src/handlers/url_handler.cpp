@@ -30,8 +30,11 @@ std::string statsCode(const std::string &path)
 }
 }
 
-UrlHandler::UrlHandler(std::shared_ptr<UrlService> service)
+UrlHandler::UrlHandler(
+    std::shared_ptr<UrlService> service,
+    std::shared_ptr<AuthService> authService)
     : service_(std::move(service)),
+    authService_(std::move(authService)),
     rateLimiter_(10.0, 10.0 / 60.0)
 {
 }
@@ -40,6 +43,7 @@ UrlHandler::UrlHandler(std::shared_ptr<UrlService> service)
 void UrlHandler::registerRoutes()
 {
     auto service = service_;
+    auto authService = authService_;
 
     
 
@@ -53,8 +57,30 @@ void UrlHandler::registerRoutes()
         });
 
     drogon::app().registerHandler(
+        "/api/v1/keys",
+        [authService](const drogon::HttpRequestPtr &,
+                      std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
+            authService->issueKey(
+                [callback](const std::string &key, std::int64_t) {
+                    if (key.empty()) {
+                        callback(jsonError(
+                            drogon::k500InternalServerError,
+                            "Unable to issue API key"));
+                        return;
+                    }
+
+                    Json::Value body;
+                    body["api_key"] = key;
+                    auto response = drogon::HttpResponse::newHttpJsonResponse(body);
+                    response->setStatusCode(drogon::k201Created);
+                    callback(response);
+                });
+        },
+        {drogon::Post});
+
+    drogon::app().registerHandler(
         "/api/v1/urls",
-        [this,service](const drogon::HttpRequestPtr &request,
+        [this,service,authService](const drogon::HttpRequestPtr &request,
                   std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
             auto json = request->getJsonObject();
             std::string ip = request->getPeerAddr().toIp();
@@ -71,29 +97,48 @@ void UrlHandler::registerRoutes()
             }
 
 
-            if (!rateLimiter_.allow(ip))
-            {
-                callback(jsonError(
-                                drogon::k429TooManyRequests,
-                                "Too Many Requests"
-                            ));
-                            return;
-            }
+            authService->authenticate(
+                request->getHeader("Authorization"),
+                [this, service, longUrl, ip, callback](std::optional<std::int64_t> userId) mutable {
+                    if (!userId) {
+                        callback(jsonError(
+                            drogon::k401Unauthorized,
+                            "Valid Bearer token required"));
+                        return;
+                    }
 
-            service->createUrl(longUrl, std::move(callback));
+                    if (!rateLimiter_.allow(ip)) {
+                        callback(jsonError(
+                            drogon::k429TooManyRequests,
+                            "Too Many Requests"));
+                        return;
+                    }
+
+                    service->createUrl(longUrl, *userId, std::move(callback));
+                });
         },
         {drogon::Post});
 
     drogon::app().registerHandler(
         "/api/v1/urls/{code}/stats",
-        [service](const drogon::HttpRequestPtr &request,
+        [service,authService](const drogon::HttpRequestPtr &request,
                   std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
             const std::string code = statsCode(request->getPath());
             if (code.empty()) {
                 callback(jsonError(drogon::k400BadRequest, "Invalid URL code"));
                 return;
             }
-            service->getStats(code, std::move(callback));
+            authService->authenticate(
+                request->getHeader("Authorization"),
+                [service, code, callback](std::optional<std::int64_t> userId) mutable {
+                    if (!userId) {
+                        callback(jsonError(
+                            drogon::k401Unauthorized,
+                            "Valid Bearer token required"));
+                        return;
+                    }
+                    service->getStats(code, *userId, std::move(callback));
+                });
         },
         {drogon::Get});
 

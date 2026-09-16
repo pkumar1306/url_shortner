@@ -7,12 +7,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Drogon CONFIG REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 add_executable(url_shortener
     src/main.cpp
     src/config/app_config.cpp
     src/database/database.cpp
     src/handlers/url_handler.cpp
+    src/services/auth_service.cpp
     src/services/url_service.cpp
     src/utils/rate_limiter.cpp
     src/utils/url_utils.cpp
@@ -23,7 +25,7 @@ target_include_directories(url_shortener
 )
 
 target_link_libraries(url_shortener
-    PRIVATE Drogon::Drogon
+    PRIVATE Drogon::Drogon OpenSSL::Crypto
 )
 
 # On Windows with a dynamic vcpkg triplet, place Drogon and its dependency DLLs

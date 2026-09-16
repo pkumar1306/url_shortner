@@ -121,7 +121,7 @@ CMakeFiles/url_shortener.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/16.2.0/bits/ranges_util.h \
  C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/include/database/database.h \
  C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/include/handlers/url_handler.h \
- C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/include/services/url_service.h \
+ C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/include/services/auth_service.h \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/drogon/drogon.h \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/trantor/net/EventLoop.h \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/trantor/utils/NonCopyable.h \
@@ -606,4 +606,5 @@ CMakeFiles/url_shortener.dir/src/main.cpp.obj: \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/drogon/IntranetIpFilter.h \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/drogon/LocalHostFilter.h \
  C:/Users/tpare/AppData/Local/Temp/url-shortener-vcpkg/installed/x64-mingw-dynamic/include/drogon/IOThreadStorage.h \
+ C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/include/services/url_service.h \
  C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/include/utils/rate_limiter.h

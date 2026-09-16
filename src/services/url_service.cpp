@@ -36,18 +36,20 @@ UrlService::UrlService(std::string baseUrl)
 
 void UrlService::createUrl(
     const std::string &longUrl,
+    std::int64_t userId,
     std::function<void(const drogon::HttpResponsePtr &)> callback)
 {
-    insertUrl(longUrl, generateShortCode(), std::move(callback));
+    insertUrl(longUrl, userId, generateShortCode(), std::move(callback));
 }
 
 void UrlService::insertUrl(
     const std::string &longUrl,
+    std::int64_t userId,
     std::string code,
     std::function<void(const drogon::HttpResponsePtr &)> callback)
 {
     database()->execSqlAsync(
-        "INSERT INTO urls (code, original_url) VALUES ($1, $2)",
+        "INSERT INTO urls (code, original_url, user_id) VALUES ($1, $2, $3)",
         [this, code, callback](const drogon::orm::Result &) {
             Json::Value body;
             body["code"] = code;
@@ -57,9 +59,9 @@ void UrlService::insertUrl(
             response->setStatusCode(drogon::k201Created);
             callback(response);
         },
-        [this, longUrl, callback](const drogon::orm::DrogonDbException &error) {
+        [this, longUrl, userId, callback](const drogon::orm::DrogonDbException &error) {
             if (isUniqueViolation(error)) {
-                insertUrl(longUrl, generateShortCode(), callback);
+            insertUrl(longUrl, userId, generateShortCode(), callback);
                 return;
             }
 
@@ -67,7 +69,8 @@ void UrlService::insertUrl(
             callback(jsonError(drogon::k500InternalServerError, "Database error"));
         },
         code,
-        longUrl);
+        longUrl,
+        userId);
 }
 
 void UrlService::redirect(
@@ -118,11 +121,13 @@ void UrlService::redirect(
 
 void UrlService::getStats(
     const std::string &code,
+    std::int64_t userId,
     std::function<void(const drogon::HttpResponsePtr &)> callback)
 {
     auto dbClient = database();
     dbClient->execSqlAsync(
-        "SELECT code, original_url, click_count FROM urls WHERE code = $1",
+        "SELECT code, original_url, click_count FROM urls "
+        "WHERE code = $1 AND user_id = $2",
         [dbClient, code, callback](const drogon::orm::Result &result) {
             if (result.empty()) {
                 callback(jsonError(drogon::k404NotFound, "Short URL not found"));
@@ -158,5 +163,6 @@ void UrlService::getStats(
             std::cerr << "Analytics error: " << error.base().what() << '\n';
             callback(jsonError(drogon::k500InternalServerError, "Database error"));
         },
-        code);
+        code,
+        userId);
 }

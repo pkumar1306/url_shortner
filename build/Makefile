@@ -224,6 +224,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/services/auth_service.obj: src/services/auth_service.cpp.obj
+.PHONY : src/services/auth_service.obj
+
+# target to build an object file
+src/services/auth_service.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.obj
+.PHONY : src/services/auth_service.cpp.obj
+
+src/services/auth_service.i: src/services/auth_service.cpp.i
+.PHONY : src/services/auth_service.i
+
+# target to preprocess a source file
+src/services/auth_service.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.i
+.PHONY : src/services/auth_service.cpp.i
+
+src/services/auth_service.s: src/services/auth_service.cpp.s
+.PHONY : src/services/auth_service.s
+
+# target to generate assembly for a file
+src/services/auth_service.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\url_shortener.dir\build.make CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.s
+.PHONY : src/services/auth_service.cpp.s
+
 src/services/url_service.obj: src/services/url_service.cpp.obj
 .PHONY : src/services/url_service.obj
 
@@ -317,6 +341,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/services/auth_service.obj
+	@echo ... src/services/auth_service.i
+	@echo ... src/services/auth_service.s
 	@echo ... src/services/url_service.obj
 	@echo ... src/services/url_service.i
 	@echo ... src/services/url_service.s

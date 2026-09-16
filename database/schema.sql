@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS users (
+    id BIGSERIAL PRIMARY KEY,
+    api_key_hash CHAR(64) NOT NULL UNIQUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS urls (
+    id BIGSERIAL PRIMARY KEY,
+    code VARCHAR(6) NOT NULL UNIQUE,
+    original_url TEXT NOT NULL,
+    user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    click_count BIGINT NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS urls_user_id_idx ON urls(user_id);
+
+CREATE TABLE IF NOT EXISTS clicks (
+    id BIGSERIAL PRIMARY KEY,
+    url_code VARCHAR(6) NOT NULL REFERENCES urls(code) ON DELETE CASCADE,
+    ip_address TEXT NOT NULL,
+    user_agent TEXT NOT NULL,
+    referrer TEXT NOT NULL,
+    clicked_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS clicks_url_code_idx ON clicks(url_code);

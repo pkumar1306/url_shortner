@@ -1,15 +1,18 @@
-# C++ URL Shortener (Phases 1–2)
+# C++ URL Shortener
 
-A minimal URL-shortening HTTP API written in C++20 with [Drogon](https://github.com/drogonframework/drogon) and CMake. Data is intentionally stored only in memory for this phase, so links disappear when the server stops.
+A URL-shortening HTTP API written in C++20 with [Drogon](https://github.com/drogonframework/drogon), PostgreSQL, and CMake.
 
 ## Included
 
 - `GET /` returns the API health message.
 - `POST /api/v1/urls` validates an HTTP/HTTPS URL and creates a unique random six-character code.
 - `GET /{code}` sends a `302 Found` redirect to the saved URL, or returns JSON `404` when absent.
+- `POST /api/v1/keys` issues a development API key.
+- `POST /api/v1/urls` requires a Bearer API key and assigns ownership to the created URL.
+- `GET /api/v1/urls/{code}/stats` requires the owning user's API key.
 - A small unit test for URL validation and storage.
 
-Database persistence, accounts, analytics, rate limits, and click tracking are deliberately not part of this phase.
+Redirects remain public. Per-key rate limiting, key revocation, and key rotation are planned for later phases.
 
 ## Prerequisites
 
@@ -35,6 +38,12 @@ cmake -S . -B build
 cmake --build build
 ```
 
+Apply the database schema before starting the server:
+
+```powershell
+psql -h $env:DB_HOST -p $env:DB_PORT -U $env:DB_USER -d $env:DB_NAME -f database/schema.sql
+```
+
 On a Windows machine using the MSYS2/MinGW compiler, select that generator explicitly (the Visual Studio `NMake` generator is not usable unless Visual Studio build tools are installed):
 
 ```powershell
@@ -58,13 +67,19 @@ The server listens on `http://localhost:8080`. To have returned links use a depl
 ```powershell
 curl http://localhost:8080/
 
+$key = (curl -s -X POST http://localhost:8080/api/v1/keys | ConvertFrom-Json).api_key
+
 curl -X POST http://localhost:8080/api/v1/urls `
   -H "Content-Type: application/json" `
+   -H "Authorization: Bearer $key" `
   -d '{"url":"https://example.com/docs"}'
 
 curl -i http://localhost:8080/<code-from-response>
-curl -i http://localhost:8080/notfound
+curl -H "Authorization: Bearer $key" `
+   http://localhost:8080/api/v1/urls/<code-from-response>/stats
 ```
+
+`POST /api/v1/keys` returns the raw key only in its creation response. The database stores a SHA-256 hash, not the raw key. Because this endpoint is intentionally public for local development, it must be replaced with protected bootstrap or administrator provisioning before deployment.
 
 Expected creation response:
 

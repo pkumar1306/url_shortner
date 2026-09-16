@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/url_shortener.dir/src/handlers/url_handler.cpp.obj.d"
   "CMakeFiles/url_shortener.dir/src/main.cpp.obj"
   "CMakeFiles/url_shortener.dir/src/main.cpp.obj.d"
+  "CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.obj"
+  "CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.obj.d"
   "CMakeFiles/url_shortener.dir/src/services/url_service.cpp.obj"
   "CMakeFiles/url_shortener.dir/src/services/url_service.cpp.obj.d"
   "CMakeFiles/url_shortener.dir/src/utils/rate_limiter.cpp.obj"

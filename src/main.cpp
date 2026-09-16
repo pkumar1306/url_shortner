@@ -13,7 +13,8 @@ int main()
     Database::configure(config);
 
     auto service = std::make_shared<UrlService>(config.baseUrl);
-    UrlHandler handler(service);
+    auto authService = std::make_shared<AuthService>();
+    UrlHandler handler(service, authService);
     handler.registerRoutes();
 
     drogon::app()

@@ -25,6 +25,12 @@
 },
 {
   "directory": "C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -D_WIN32_WINNT=0x0601 @CMakeFiles\\url_shortener.dir\\includes_CXX.rsp -std=gnu++20 -o CMakeFiles\\url_shortener.dir\\src\\services\\auth_service.cpp.obj -c C:\\Users\\tpare\\.codex\\.chatgpt-projects\\g-p-6aa647d99e5c819189e9b441c509d27d\\src\\services\\auth_service.cpp",
+  "file": "C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/src/services/auth_service.cpp",
+  "output": "CMakeFiles/url_shortener.dir/src/services/auth_service.cpp.obj"
+},
+{
+  "directory": "C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -D_WIN32_WINNT=0x0601 @CMakeFiles\\url_shortener.dir\\includes_CXX.rsp -std=gnu++20 -o CMakeFiles\\url_shortener.dir\\src\\services\\url_service.cpp.obj -c C:\\Users\\tpare\\.codex\\.chatgpt-projects\\g-p-6aa647d99e5c819189e9b441c509d27d\\src\\services\\url_service.cpp",
   "file": "C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/src/services/url_service.cpp",
   "output": "CMakeFiles/url_shortener.dir/src/services/url_service.cpp.obj"
