@@ -1,8 +1,0 @@
-[
-{
-  "directory": "C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build_collision_check",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -D_WIN32_WINNT=0x0601 @CMakeFiles\\url_shortener.dir\\includes_CXX.rsp -std=gnu++20 -o CMakeFiles\\url_shortener.dir\\src\\main.cpp.obj -c C:\\Users\\tpare\\.codex\\.chatgpt-projects\\g-p-6aa647d99e5c819189e9b441c509d27d\\src\\main.cpp",
-  "file": "C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/src/main.cpp",
-  "output": "CMakeFiles/url_shortener.dir/src/main.cpp.obj"
-}
-]

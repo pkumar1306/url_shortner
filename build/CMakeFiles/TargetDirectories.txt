@@ -1,7 +1,0 @@
-C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build/CMakeFiles/url_shortener.dir
-C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build/CMakeFiles/url_store_tests.dir
-C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build/CMakeFiles/rate_limiter_test.dir
-C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build/CMakeFiles/auth_utils_tests.dir
-C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build/CMakeFiles/test.dir
-C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build/CMakeFiles/edit_cache.dir
-C:/Users/tpare/.codex/.chatgpt-projects/g-p-6aa647d99e5c819189e9b441c509d27d/build/CMakeFiles/rebuild_cache.dir
