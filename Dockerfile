@@ -21,7 +21,7 @@ RUN git clone https://github.com/drogonframework/drogon.git /tmp/drogon \
     && git submodule update --init \
     && mkdir build && cd build \
     && cmake .. -DCMAKE_BUILD_TYPE=Release \
-    && make -j$(nproc) && make install \
+    && make -j1 && make install \
     && rm -rf /tmp/drogon
 
 # Build the application
@@ -31,7 +31,7 @@ COPY . .
 # We use a clean build directory in the container
 RUN rm -rf build && mkdir build && cd build \
     && cmake .. -DCMAKE_BUILD_TYPE=Release \
-    && make -j$(nproc)
+    && make -j1
 
 # --- Stage 2: Runtime stage ---
 FROM ubuntu:24.04 AS runner
