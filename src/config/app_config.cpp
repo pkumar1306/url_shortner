@@ -44,5 +44,10 @@ AppConfig AppConfig::fromEnvironment()
         std::cerr << "DB_PASSWORD is not set. Set it before starting the server.\n";
         std::exit(1);
     }
+
+    // Logging configuration
+    config.logLevel = environmentValue("LOG_LEVEL", config.logLevel);
+    config.logFile  = environmentValue("LOG_FILE",  config.logFile);
+
     return config;
 }

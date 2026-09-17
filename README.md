@@ -63,6 +63,29 @@ cmake --build build
 
 The server listens on `http://localhost:8080`. To have returned links use a deployed public address, set `BASE_URL` before starting it, for example: `$env:BASE_URL = "https://sho.rt"`.
 
+### Logging Configuration
+
+The application features a production-grade, thread-safe logger configured via environment variables:
+
+- `LOG_LEVEL`: Minimum severity level to log. Options: `TRACE`, `DEBUG`, `INFO` (default), `WARN`, `ERROR`.
+- `LOG_FILE`: File path for persistent log storage. Default: `logs/app.log`. Set to empty string for console-only logging.
+
+Example configuring debug file logging:
+```powershell
+$env:LOG_LEVEL = "DEBUG"
+$env:LOG_FILE = "logs/dev.log"
+./build/url_shortener
+```
+
+**Log Line Format:**
+`2026-09-17T22:15:08.123Z [INFO ] [tid:14028] [req:3f2504e0-4f89-11d3-9a0c-0305e82c3301] POST /api/v1/urls from ip=127.0.0.1`
+
+- **ISO-8601 UTC Timestamp** with millisecond precision.
+- **Severity Level** (`TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`).
+- **Thread ID** (`tid:14028`) for multi-threaded debugging.
+- **Request ID** (`req:3f2504e0...`) automatically attached to every log statement within the lifecycle of an HTTP request, and returned to clients in the `X-Request-Id` response header.
+- **Sensitive Data Redaction**: API keys, passwords, Authorization headers, and Bearer tokens are automatically redacted before outputting (`***REDACTED***`).
+
 ## Try it
 
 ```powershell

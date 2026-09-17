@@ -12,5 +12,9 @@ struct AppConfig {
     std::string dbUser{"postgres"};
     std::string dbPassword;
 
+    // Logging configuration – read from LOG_LEVEL and LOG_FILE env vars.
+    std::string logLevel{"INFO"};        // TRACE | DEBUG | INFO | WARN | ERROR
+    std::string logFile{"logs/app.log"}; // empty = console only
+
     static AppConfig fromEnvironment();
 };

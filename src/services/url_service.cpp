@@ -2,8 +2,6 @@
 
 #include "utils/url_utils.h"
 
-#include <iostream>
-
 namespace {
 drogon::orm::DbClientPtr database()
 {
@@ -27,21 +25,47 @@ bool isUniqueViolation(const drogon::orm::DrogonDbException &error)
         dynamic_cast<const drogon::orm::SqlError *>(&error.base());
     return sqlError != nullptr && sqlError->sqlState() == "23505";
 }
+
+// Fallback no-op logger used when no logger is injected.
+std::shared_ptr<Logger> nullLogger()
+{
+    static auto instance = std::make_shared<Logger>(LogLevel::ERROR);
+    return instance;
+}
 }
 
-UrlService::UrlService(std::string baseUrl)
-    : baseUrl_(std::move(baseUrl))
+// ---------------------------------------------------------------------------
+// Constructors
+// ---------------------------------------------------------------------------
+UrlService::UrlService(std::string baseUrl, std::shared_ptr<Logger> logger)
+    : baseUrl_(std::move(baseUrl)),
+      logger_(std::move(logger))
 {
 }
 
+UrlService::UrlService(std::string baseUrl)
+    : baseUrl_(std::move(baseUrl)),
+      logger_(nullLogger())
+{
+}
+
+// ---------------------------------------------------------------------------
+// createUrl – generate a short code and persist the mapping.
+// ---------------------------------------------------------------------------
 void UrlService::createUrl(
     const std::string &longUrl,
     std::int64_t userId,
     std::function<void(const drogon::HttpResponsePtr &)> callback)
 {
-    insertUrl(longUrl, userId, generateShortCode(), std::move(callback));
+    const auto code = generateShortCode();
+    logger_->debug("Creating short URL: code=" + code +
+                   " user_id=" + std::to_string(userId));
+    insertUrl(longUrl, userId, code, std::move(callback));
 }
 
+// ---------------------------------------------------------------------------
+// insertUrl – attempt to INSERT; retry on unique-violation (code collision).
+// ---------------------------------------------------------------------------
 void UrlService::insertUrl(
     const std::string &longUrl,
     std::int64_t userId,
@@ -51,6 +75,9 @@ void UrlService::insertUrl(
     database()->execSqlAsync(
         "INSERT INTO urls (code, original_url, user_id) VALUES ($1, $2, $3)",
         [this, code, callback](const drogon::orm::Result &) {
+            logger_->info("Short URL created: code=" + code +
+                          " short_url=" + baseUrl_ + "/" + code);
+
             Json::Value body;
             body["code"] = code;
             body["short_url"] = baseUrl_ + "/" + code;
@@ -61,11 +88,13 @@ void UrlService::insertUrl(
         },
         [this, longUrl, userId, callback](const drogon::orm::DrogonDbException &error) {
             if (isUniqueViolation(error)) {
-            insertUrl(longUrl, userId, generateShortCode(), callback);
+                logger_->warn("Short code collision detected, retrying with new code");
+                insertUrl(longUrl, userId, generateShortCode(), callback);
                 return;
             }
 
-            std::cerr << "Database error: " << error.base().what() << '\n';
+            logger_->error(std::string("URL insert DB error: ") +
+                           error.base().what());
             callback(jsonError(drogon::k500InternalServerError, "Database error"));
         },
         code,
@@ -73,38 +102,50 @@ void UrlService::insertUrl(
         userId);
 }
 
+// ---------------------------------------------------------------------------
+// redirect – look up the original URL and record a click event.
+// ---------------------------------------------------------------------------
 void UrlService::redirect(
     const std::string &code,
     const ClickMetadata &metadata,
     std::function<void(const drogon::HttpResponsePtr &)> callback)
 {
+    logger_->debug("Redirect lookup: code=" + code +
+                   " ip=" + metadata.ipAddress);
+
     auto dbClient = database();
     dbClient->execSqlAsync(
         "SELECT original_url FROM urls WHERE code = $1",
         [this, dbClient, code, metadata, callback](const drogon::orm::Result &result) {
             if (result.empty()) {
+                logger_->warn("Redirect failed: code=" + code + " not found");
                 callback(jsonError(drogon::k404NotFound, "Short URL not found"));
                 return;
             }
 
             const std::string longUrl = result[0]["original_url"].as<std::string>();
+            logger_->trace("Code " + code + " resolves to " + longUrl);
+
             dbClient->execSqlAsync(
                 "INSERT INTO clicks (url_code, ip_address, user_agent, referrer) "
                 "VALUES ($1, $2, $3, $4)",
-                [dbClient, code, longUrl, callback](const drogon::orm::Result &) {
+                [this, dbClient, code, longUrl, callback](const drogon::orm::Result &) {
                     dbClient->execSqlAsync(
                         "UPDATE urls SET click_count = click_count + 1 WHERE code = $1",
-                        [longUrl, callback](const drogon::orm::Result &) {
+                        [this, code, longUrl, callback](const drogon::orm::Result &) {
+                            logger_->info("Redirect served: code=" + code);
                             callback(drogon::HttpResponse::newRedirectionResponse(longUrl));
                         },
-                        [callback](const drogon::orm::DrogonDbException &error) {
-                            std::cerr << "Click counter error: " << error.base().what() << '\n';
+                        [this, callback](const drogon::orm::DrogonDbException &error) {
+                            logger_->error(std::string("Click counter update error: ") +
+                                           error.base().what());
                             callback(jsonError(drogon::k500InternalServerError, "Database error"));
                         },
                         code);
                 },
-                [callback](const drogon::orm::DrogonDbException &error) {
-                    std::cerr << "Click event error: " << error.base().what() << '\n';
+                [this, callback](const drogon::orm::DrogonDbException &error) {
+                    logger_->error(std::string("Click event insert error: ") +
+                                   error.base().what());
                     callback(jsonError(drogon::k500InternalServerError, "Database error"));
                 },
                 code,
@@ -112,24 +153,33 @@ void UrlService::redirect(
                 metadata.userAgent,
                 metadata.referrer);
         },
-        [callback](const drogon::orm::DrogonDbException &error) {
-            std::cerr << "Database error: " << error.base().what() << '\n';
+        [this, callback](const drogon::orm::DrogonDbException &error) {
+            logger_->error(std::string("URL lookup DB error: ") +
+                           error.base().what());
             callback(jsonError(drogon::k500InternalServerError, "Database error"));
         },
         code);
 }
 
+// ---------------------------------------------------------------------------
+// getStats – return click statistics for a URL owned by the given user.
+// ---------------------------------------------------------------------------
 void UrlService::getStats(
     const std::string &code,
     std::int64_t userId,
     std::function<void(const drogon::HttpResponsePtr &)> callback)
 {
+    logger_->debug("Stats request: code=" + code +
+                   " user_id=" + std::to_string(userId));
+
     auto dbClient = database();
     dbClient->execSqlAsync(
         "SELECT code, original_url, click_count FROM urls "
         "WHERE code = $1 AND user_id = $2",
-        [dbClient, code, callback](const drogon::orm::Result &result) {
+        [this, dbClient, code, callback](const drogon::orm::Result &result) {
             if (result.empty()) {
+                logger_->warn("Stats not found: code=" + code +
+                              " (wrong owner or missing URL)");
                 callback(jsonError(drogon::k404NotFound, "Short URL not found"));
                 return;
             }
@@ -144,23 +194,28 @@ void UrlService::getStats(
                 "SELECT to_char(clicked_at, 'YYYY-MM-DD') AS day, "
                 "COUNT(*) AS clicks FROM clicks WHERE url_code = $1 "
                 "GROUP BY day ORDER BY day",
-                [body, callback](const drogon::orm::Result &dailyResult) mutable {
+                [this, code, body, callback](const drogon::orm::Result &dailyResult) mutable {
                     for (const auto &row : dailyResult) {
                         Json::Value day;
                         day["day"] = row["day"].as<std::string>();
                         day["clicks"] = row["clicks"].as<int64_t>();
                         body["clicks_by_day"].append(day);
                     }
+                    logger_->info("Stats served: code=" + code +
+                                  " total_clicks=" +
+                                  std::to_string(body["total_clicks"].asInt64()));
                     callback(drogon::HttpResponse::newHttpJsonResponse(body));
                 },
-                [callback](const drogon::orm::DrogonDbException &error) {
-                    std::cerr << "Analytics error: " << error.base().what() << '\n';
+                [this, callback](const drogon::orm::DrogonDbException &error) {
+                    logger_->error(std::string("Daily analytics query error: ") +
+                                   error.base().what());
                     callback(jsonError(drogon::k500InternalServerError, "Database error"));
                 },
                 code);
         },
-        [callback](const drogon::orm::DrogonDbException &error) {
-            std::cerr << "Analytics error: " << error.base().what() << '\n';
+        [this, callback](const drogon::orm::DrogonDbException &error) {
+            logger_->error(std::string("Stats query DB error: ") +
+                           error.base().what());
             callback(jsonError(drogon::k500InternalServerError, "Database error"));
         },
         code,

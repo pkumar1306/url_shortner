@@ -20,7 +20,9 @@ add_executable(url_shortener
     src/services/url_service.cpp
     src/url_store.cpp
     src/utils/auth_utils.cpp
+    src/utils/logger.cpp
     src/utils/rate_limiter.cpp
+    src/utils/request_id.cpp
     src/utils/url_utils.cpp
 )
 
@@ -64,3 +66,13 @@ add_executable(auth_utils_tests
 target_include_directories(auth_utils_tests PRIVATE include)
 target_link_libraries(auth_utils_tests PRIVATE OpenSSL::Crypto)
 add_test(NAME auth_utils_tests COMMAND auth_utils_tests)
+
+
+add_executable(logger_tests
+    tests/logger_tests.cpp
+    src/utils/logger.cpp
+)
+
+target_include_directories(logger_tests PRIVATE include)
+
+add_test(NAME logger_tests COMMAND logger_tests)

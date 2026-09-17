@@ -17,7 +17,7 @@ def create_url(i):
         URL,
         headers={"Authorization": f"Bearer {API_KEY}"},
         json={"url": f"https://example.com/page/{i}"}
-    )
+    ) 
 
     return response.status_code, response.json()
 

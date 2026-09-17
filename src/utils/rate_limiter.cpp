@@ -1,6 +1,5 @@
 #include "utils/rate_limiter.h"
 #include <algorithm>
-#include <iostream>
 
 
 RateLimiter::RateLimiter(double capacity, double refillRate)
@@ -41,7 +40,7 @@ bool RateLimiter::allow(const std::string& ip)
     bucket.tokens = std::min(bucket.tokens, capacity_);
 
     bucket.lastRefill = now;
-    std::cout<<"tokens lift:"<<bucket.tokens<<std::endl;
+
     // No token available
     if (bucket.tokens < 1.0)
     {

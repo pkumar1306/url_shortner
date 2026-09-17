@@ -1,9 +1,15 @@
 #pragma once
 
+#include "utils/logger.h"
+
 #include <drogon/drogon.h>
+#ifdef ERROR
+#undef ERROR
+#endif
 
 #include <cstdint>
 #include <functional>
+#include <memory>
 #include <string>
 
 struct ClickMetadata {
@@ -14,6 +20,10 @@ struct ClickMetadata {
 
 class UrlService {
   public:
+    /// Construct with a base URL and an injected logger.
+    UrlService(std::string baseUrl, std::shared_ptr<Logger> logger);
+
+    /// Legacy constructor (no logger – for backward compat / tests).
     explicit UrlService(std::string baseUrl);
 
     void createUrl(
@@ -33,6 +43,7 @@ class UrlService {
 
   private:
     std::string baseUrl_;
+    std::shared_ptr<Logger> logger_;
 
     void insertUrl(
         const std::string &longUrl,
