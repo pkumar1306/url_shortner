@@ -1,0 +1,10 @@
+build/
+build2/
+build3/
+build_collision_check/
+build_refactor_check/
+.git/
+.vscode/
+tests/
+*.exe
+*.log
