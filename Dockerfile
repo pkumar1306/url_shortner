@@ -16,12 +16,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Drogon from source (Render will cache this step if it doesn't change)
-RUN git clone https://github.com/drogonframework/drogon.git /tmp/drogon \
+RUN git clone --depth 1 https://github.com/drogonframework/drogon.git /tmp/drogon \
     && cd /tmp/drogon \
-    && git submodule update --init \
+    && git submodule update --init --depth 1 \
     && mkdir build && cd build \
-    && cmake .. -DCMAKE_BUILD_TYPE=Release \
-    && make -j1 && make install \
+    && cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF -DBUILD_CTL=OFF -DBUILD_TESTING=OFF \
+    && make -j"$(nproc)" && make install \
     && rm -rf /tmp/drogon
 
 # Build the application
@@ -31,7 +31,7 @@ COPY . .
 # We use a clean build directory in the container
 RUN rm -rf build && mkdir build && cd build \
     && cmake .. -DCMAKE_BUILD_TYPE=Release \
-    && make -j1
+    && make -j"$(nproc)" url_shortener
 
 # --- Stage 2: Runtime stage ---
 FROM ubuntu:24.04 AS runner
